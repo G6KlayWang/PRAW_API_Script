@@ -15,7 +15,7 @@ import os
 option = input("Which party: ")
 if option == "D":
     fileC = open(
-        "E:\\01_NYU\\2023\\2023 Spring Research\\politicsProject\\politicsProjectCharles\\candidateList\\democrateList.txt",
+        "a.txt",
         "r")
     candidates = fileC.readlines()
     fileC.close()
@@ -24,25 +24,19 @@ if option == "D":
 
 elif option == "R":
     fileC = open(
-        "E:\\01_NYU\\2023\\2023 Spring Research\\politicsProject\\politicsProjectCharles\\candidateList\\RepublicanList.txt",
+        "b.txt",
         "r")
     candidates = fileC.readlines()
     fileC.close()
     
     party = "republicans"
     print("end")
-    
-'''
-for name in candidates:
-    name = name.strip()
-    os.mkdir("E:\\01_NYU\\2023\\2023 Spring Research\\politicsProject\\politicsProjectCharles\\" + party + "\\" + name)
-'''
 
 reddit = praw.Reddit(
-    client_id="y3gGwSYwfgnuzlEWToPESw",
-    client_secret="yKIIhHrAb_OYHhc2vmEU73zqJnUwug",
-    username="charles2739",
-    password="Wmy2022offer@",
+    client_id="Your Client Id",
+    client_secret="Your Client secret",
+    username="Your Username",
+    password="Your Password",
     user_agent="analyticsResearch",
     check_for_async=False
      )
@@ -84,5 +78,5 @@ for candidate in candidates:
             mylist.append([time, i.title, i.score, i.upvote_ratio, i.url])
     
     data = pd.DataFrame(mylist, columns = ['date', 'post title', 'score', 'upvote_ratio', "url"])
-    filename = "E:\\01_NYU\\2023\\2023 Spring Research\\politicsProject\\politicsProjectCharles\\" + party+"\\" + candidate+"\\"+ timeFormat+".csv"
+    filename = party+"\\" + candidate+"\\"+ timeFormat+".csv"
     data.to_csv(filename, mode = 'a')
